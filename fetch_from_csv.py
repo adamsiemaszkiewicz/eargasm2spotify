@@ -98,7 +98,7 @@ with open('Posts-Export-2019-April-27-1417.csv', encoding='utf-8') as csv_file:
             id = line_count - 1
             # Create a song name string by joining artist-title 'name' tuple
             single_song = "".join(name)
-            # Search for a song and store in results
+            # Search for a song and store in results using Spotify API
             results = sp.search(single_song, type='track')
             # If nothing found set song_uri to 0
             if len(results['tracks']['items']) < 1 : song_uri = 0

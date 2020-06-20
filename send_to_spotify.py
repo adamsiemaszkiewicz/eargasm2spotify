@@ -37,10 +37,28 @@ cur = conn.cursor()
 
 # END DATABASE PREPARATION
 
+yearmonth = input('Specify year and month (YYYY MM): ')
+if len(yearmonth) < 7 :
+    print('Wrong date')
+    quit()
+year = yearmonth[0:4]
+month = yearmonth[5:7]
+print(year, month)
 # Select all columns from Locations table
-cur.execute('SELECT date FROM Songs')
-date = cur.fetchone()[0]
+cur.execute('''
+SELECT
+    date
+FROM
+    Songs
+WHERE
+    strftime('%Y', date) = ?
+AND
+    strftime('%m', date) = ?
+''', (year,month))
+date = cur.fetchall()
 print(date)
+
+cur.execute('SELECT date FROM Songs')
 
 
 #playlist_name = input('Enter the name of the playlist: ')

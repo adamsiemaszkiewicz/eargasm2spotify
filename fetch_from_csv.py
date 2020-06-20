@@ -18,7 +18,7 @@ import sqlite3
 
 # Set client ID and secret codes
 client_id 	= '855da9372490409f8c91294cb7bded92'
-client_secret = 'e07f2af6f96a490a92bc3653cbec6b23'
+client_secret = 'bdf605a0de9c4cb5bdf28fcca1c9ef1a'
 
 credentials = SpotifyClientCredentials(
     client_id = client_id,
@@ -44,7 +44,7 @@ CREATE TABLE Songs (
     id     INTEGER UNIQUE,
     artist   TEXT,
     title   TEXT,
-    uri   TEXT UNIQUE,
+    uri   TEXT,
     date   TEXT
 )
 ''')
@@ -96,17 +96,18 @@ with open('Posts-Export-2019-April-27-1417.csv', encoding='utf-8') as csv_file:
 
             # Create a track_id variable
             id = line_count - 1
+            # Create a song name string by joining artist-title 'name' tuple
             single_song = "".join(name)
+            # Search for a song and store in results
             results = sp.search(single_song, type='track')
+            # If nothing found set song_uri to 0
             if len(results['tracks']['items']) < 1 : song_uri = 0
+            # Else fetch the uri from API
             else : song_uri = results['tracks']['items'][0]['uri']
             # Insert or ignore song meta data into the database
             cur.execute('''INSERT OR IGNORE INTO Songs
                 (id, artist, title, uri, date) VALUES ( ?, ?, ?, ?, ? )''',
                 ( id, artist, title, song_uri, date ) )
-
-            
-
 
             # Print track info
             print('Track #', id, artist, title, date, song_uri)

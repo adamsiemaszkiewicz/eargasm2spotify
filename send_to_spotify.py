@@ -24,8 +24,8 @@ pause = input('Press enter to continue...')
 
 # Set client ID and secret codes
 
-client_id 	= input('Enter your Spotify client_id')
-client_secret = input('Enter your Spotify client_secret')
+client_id 	= input('Enter your Spotify client_id ')
+client_secret = input('Enter your Spotify client_secret ')
 user_id = 'bb1lourrmw2toc01eq4fqgi9o'
 redirect_uri = 'http://eargasmusic.com/'
 scopes = 'playlist-read-collaborative playlist-modify-private playlist-modify-public playlist-read-private'

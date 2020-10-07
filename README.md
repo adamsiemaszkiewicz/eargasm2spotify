@@ -7,6 +7,8 @@ This is a Python script meant to migrate a Wordpress database dump containing so
 
 *The project is meant to practise knowledge learnt thanks to [Python for Everybody Course](https://github.com/adamsiemaszkiewicz/coursera_python-for-everybody) but at the same time to automitize the migration which, when manually-done, would be ultra time-consuming.*
 
+![eargasm logo](https://github.com/adamsiemaszkiewicz/eargasm2spotify/blob/master/cover.jpg?raw=true)
+
 ## Files
 
 ### Posts-Export-2019-April-27-1417.csv
@@ -24,6 +26,10 @@ The SQLite file containing nicely organized songs.
 ### send_to_spotify.py
 
 The script uses [Spotipy library](https://github.com/plamere/spotipy) to authenticate the user, fetch the songs from the SQLite file, create empty monthly playlists, search for the songs on Spotify and add songs to the respective monthly playlists. If the song is not found (quite common) the script creates files containing failed song names. The script includes some debugging.
+
+### spotipy-master.zip
+
+The [Spotipy library](https://github.com/plamere/spotipy) package.
 
 ## Thank you!
 
